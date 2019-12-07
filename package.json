@@ -1,0 +1,21 @@
+{
+  "name": "smite-stats",
+  "version": "1.0.0",
+  "description": "React - Node application that stores user data from Smite (https://www.smitegame.com/) to display on a website and to be endpoints for a discord bot to hit.",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd frontend && npm start",
+    "server": "cd backend && npm start",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taylorjohannsen/smite-stats.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taylorjohannsen/smite-stats/issues"
+  },
+  "homepage": "https://github.com/taylorjohannsen/smite-stats#readme"
+}
