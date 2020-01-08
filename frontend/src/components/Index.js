@@ -1,25 +1,50 @@
 import React from 'react';
 import Axios from 'axios';
+import MongoRender from './MongoRender'
 
 class Index extends React.Component {
     constructor() {
         super();
 
         this.state = {
-            players: []
+            kills: [],
+            deaths: [],
+            healing: [],
+            wins: [],
+            damage: [],
+            wards: [],
+            masteries: [],
+            gold: [],
+            conquest: [],
+            hours: [],
+            loading: true
         }
-        this.callApi = this.callApi.bind(this);
+
+        this.callMongo = this.callMongo.bind(this);
     }
 
     componentDidMount() {
-        this.callApi()
+        this.callMongo()
     }
 
-    callApi() {
-        Axios.get('/player')
+    callMongo() {
+        Axios.get('/mongo')
             .then(res => {
+                console.log(res.data)
+                let mongo = res.data
+
                 this.setState({
-                    players: res.data
+                    kills: mongo.kills,
+                    deaths: mongo.deaths,
+                    healing: mongo.healing,
+                    wins: mongo.wins,
+                    damage: mongo.damage,
+                    wards: mongo.wards,
+                    masteries: mongo.masteries,
+                    gold: mongo.gold,
+                    conquest: mongo.conquest,
+                    hours: mongo.hours,
+                    loading: false
                 })
             })
             .catch(err => {
@@ -28,21 +53,20 @@ class Index extends React.Component {
     }
 
     render() {
-        let playerInfo = this.state.players.map(player => {
-            return player.map(key => {
-                return (
-                    <div key={key.ActivePlayerId}>
-                        <div>{key.hz_player_name} - Hours Played: {key.HoursPlayed} - Wins: {key.Wins} - Losses: {key.Losses} - W/L: {((key.Wins / key.Losses).toFixed(2))}</div>
-                    </div>
-                )
-            })
-        })
 
-        console.log(playerInfo)
 
         return (
             <div>
-                {playerInfo}
+                <MongoRender data={this.state.kills} />
+                <MongoRender data={this.state.deaths} />
+                <MongoRender data={this.state.healing} />
+                <MongoRender data={this.state.damage} />
+                <MongoRender data={this.state.wards} />
+                <MongoRender data={this.state.gold} />
+                <MongoRender data={this.state.masteries} />
+                <MongoRender data={this.state.wins} />
+                <MongoRender data={this.state.conquest} />
+                <MongoRender data={this.state.hours} />
             </div>
         )
     }
