@@ -1,22 +1,25 @@
 const Main = require('../models/Main')
 
 module.exports.getPlayerInfo = async (req, res) => {
-    let players = ['taylortj', 'justvincent', 'ClassicWaldo', 'Nightwing728']
-    let playerInfo = [];
+    // const {
+    //     player
+    // } = req.body
+    let player = 'taylortj'
+    let playerObject = {}
+
+    api.getPlayer(player)
+    .then(data => {
+        let playerData = data[0]
+        
 
 
-    function getPlayerData(player) {
-        return api.getPlayer(player)
-            .then(data => {
-                console.log(data)
-                playerInfo.push(data);
-            })
-            .catch(err => {
-                res.status(500).json(err);
-            })
-    }
 
-    res.status(200).json(playerInfo);
+
+        // res.status(200).json(playerInfo);
+    })
+    .catch(err => {
+        res.status(500).json(err);
+    })
 }
 
 module.exports.getMongoData = (req, res) => {
