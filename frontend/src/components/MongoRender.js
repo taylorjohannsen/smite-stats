@@ -1,8 +1,51 @@
 import React from 'react'
+import '../css/MongoRender.css'
 
 function MongoRender(props) {
+    let mongoData = props.data.map((mongo, i) => {
+        if (props.single === undefined) {
+            return (
+                <div key={i} className="listBox">
+                    <div className="leftBox">
+                        <img className='godImage' alt={mongo.god.name} src={mongo.god.portrait}></img>
+                        <div className="leftTextCont">
+                            <div className='playerName'>{mongo.player}</div>
+                            <div className='underPlayer'>{mongo.god.name}</div>
+                            <div className='underPlayer'>{mongo.date}</div>
+                        </div>
+                    </div>
+                    <div className="rightBox">
+                        <div className="mongoCount">{mongo.count}</div>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div key={i} className="listBox">
+                    <div className="leftBox">
+                        <img className='godImage' alt={mongo.god.name} src={mongo.god.portrait}></img>
+                        <div className="leftTextCont">
+                            <div className='playerName'>{mongo.player}</div>
+                        </div>
+                    </div>
+                    <div className="rightBox">
+                        <div className="mongoCount">{mongo.count}</div>
+                    </div>
+                </div>
+            )
+        }
+    })
+
     return (
-        <div>{props.data} moo</div>
+        <div className="cFlex">
+            <div className='titleCont'>
+                <div className='title'>{props.type}</div>
+                {(props.single === undefined) ? <div className='subTitle'>- Single Match</div> : <div className='subTitle'>- All Time</div>}
+            </div>
+            <div className='listCont'>
+                {mongoData}
+            </div>
+        </div>
     )
 }
 

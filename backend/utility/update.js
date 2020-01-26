@@ -110,6 +110,7 @@ function matchUpdate(api, array, property, gods) {
 
         resolve(newArray)
     })
+    .catch(err => console.log(err))
 }
 
 function sortArrayByCount(array) {
@@ -119,6 +120,7 @@ function sortArrayByCount(array) {
         sortedArray.splice(10)
         resolve(sortedArray)
     })
+    .catch(err => console.log(err))
 }
 
 function sortArrayRemoveDuplicates(array, db) {
@@ -143,6 +145,7 @@ function sortArrayRemoveDuplicates(array, db) {
         sortedArray.splice(10)
         resolve(sortedArray)
     })
+    .catch(err => console.log(err))
 }
 
 function godsInfo() {
@@ -153,6 +156,7 @@ function godsInfo() {
             })
             .catch(err => console.log(err))
     })
+    .catch(err => console.log(err))
 }
 
 function godPortrait(name, gods) {
@@ -165,4 +169,5 @@ function godPortrait(name, gods) {
             resolve('')
         }
     })
+    .catch(err => console.log(err))
 }

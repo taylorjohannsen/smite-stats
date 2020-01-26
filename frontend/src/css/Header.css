@@ -1,0 +1,127 @@
+.HeaderCont {
+    width: 100%;
+    color: white;
+    margin-bottom: 50px;
+    border-bottom: 1px solid;
+    overflow: auto;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+}
+
+.playerTop {
+    width: 100%;
+}
+
+.placeholder {
+    height: 80px;
+}
+
+.playerCont {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.playerIcon {
+    height: 60px;
+    width: auto;
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.548);
+}
+
+.playerIcon:hover {
+    border: 1px solid rgb(105, 2, 88);
+}
+
+.player {
+    font-size: 18px;
+    text-align: right;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+}
+
+.player:hover {
+    color: rgb(105, 2, 105);
+}
+
+.level {
+    font-size: 13px;
+    text-align: right;
+    color: grey;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.mainTitleCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.mainTitle {
+    font-family: 'Viga', sans-serif;
+    border: 5px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    color: white;
+    text-decoration: none;
+}
+
+.searchCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.botMar {
+    padding-bottom: 40px;
+}
+
+.userInput {
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+    background-color: black;
+    border: 1px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+    outline: 0;
+    color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.userInput:focus {
+    background-color: rgb(36, 36, 36);
+}
+
+.userSubmit {
+    background-color: black;
+    border: 3px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+    color: white;
+    width: 100px;
+    cursor: pointer;
+    padding: 10px
+}
+
+.userSubmit:hover {
+    background-color: rgb(56, 56, 56);
+}
+
+.change {
+    cursor: pointer;
+}
+
+.change:hover {
+    color: white;
+}

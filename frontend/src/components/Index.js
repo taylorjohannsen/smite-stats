@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import MongoRender from './MongoRender'
+import '../css/Index-Front.css'
 
 class Index extends React.Component {
     constructor() {
@@ -30,7 +31,6 @@ class Index extends React.Component {
     callMongo() {
         Axios.get('/mongo')
             .then(res => {
-                console.log(res.data)
                 let mongo = res.data
 
                 this.setState({
@@ -54,19 +54,19 @@ class Index extends React.Component {
 
     render() {
 
-
+ 
         return (
-            <div>
-                <MongoRender data={this.state.kills} />
-                <MongoRender data={this.state.deaths} />
-                <MongoRender data={this.state.healing} />
-                <MongoRender data={this.state.damage} />
-                <MongoRender data={this.state.wards} />
-                <MongoRender data={this.state.gold} />
-                <MongoRender data={this.state.masteries} />
-                <MongoRender data={this.state.wins} />
-                <MongoRender data={this.state.conquest} />
-                <MongoRender data={this.state.hours} />
+            <div className="boxContainer container">
+                <MongoRender data={this.state.kills} type='Kills' />
+                <MongoRender data={this.state.deaths} type='Deaths' />
+                <MongoRender data={this.state.healing} type='Healing' />
+                <MongoRender data={this.state.damage} type='Damage' />
+                <MongoRender data={this.state.wards} type='Wards' />
+                <MongoRender data={this.state.gold} type='Gold' />
+                <MongoRender data={this.state.masteries} type='Mastery Level' single={true} />
+                <MongoRender data={this.state.wins} type='Wins' single={true} />
+                <MongoRender data={this.state.conquest} type='Ranked Conquest MMR' single={true} />
+                <MongoRender data={this.state.hours} type='Hours Played' single={true} />
             </div>
         )
     }
