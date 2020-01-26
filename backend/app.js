@@ -15,10 +15,10 @@ global.api = new hirez.Smite({
     authKey: creds.authKey,
 })
 
-mongoose.connect(db.uri, { useNewUrlParser: true, useUnifiedTopology: true } ,(err) => (err) ? console.log(err) : console.log('Connnected to DB!')).then(() => update.updateMongo())
+mongoose.connect(db.uri, { useNewUrlParser: true, useUnifiedTopology: true } ,(err) => (err) ? console.log(err) : console.log('Connnected to DB!'))
 
 app.use('/', index)
-// schedule.scheduleJob('30 * * * *', () => update.updateMongo())
+schedule.scheduleJob('30 * * * *', () => update.updateMongo())
 
 app.listen(3001, () => console.log('Started Node on port 3001!'))
 

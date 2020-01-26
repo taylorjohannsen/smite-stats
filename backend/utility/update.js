@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 
 module.exports.updateMongo = () => {
     const players = ['taylortj', 'justvincent', 'ClassicWaldo', 'Nightwing728']
-    // const players = ['ClassicWaldo']
 
     Main.findById('5e15606ba16a672c7897d41d')
         .then(async database => {
@@ -13,6 +12,10 @@ module.exports.updateMongo = () => {
             let hours = []
             let kills = []
             let deaths = []
+            let healing = []
+            let damage = []
+            let wards = []
+            let gold = []
 
             let gods = await godsInfo()
 
@@ -33,6 +36,10 @@ module.exports.updateMongo = () => {
                     .then(async matches => {
                         await matchUpdate(matches, kills, 'Kills', gods)
                         await matchUpdate(matches, deaths, 'Deaths', gods)
+                        await matchUpdate(matches, healing, 'Healing', gods)
+                        await matchUpdate(matches, damage, 'Damage', gods)
+                        await matchUpdate(matches, wards, 'Wards_Placed', gods)
+                        await matchUpdate(matches, gold, 'Gold', gods)
                     })
                     .catch(err => console.log(err))
             }
@@ -43,12 +50,15 @@ module.exports.updateMongo = () => {
             database.hours = await sortArrayByCount(hours)
             database.kills = await sortArrayRemoveDuplicates(kills, database.kills)
             database.deaths = await sortArrayRemoveDuplicates(deaths, database.deaths)
+            database.healing = await sortArrayRemoveDuplicates(healing, database.healing)
+            database.damage = await sortArrayRemoveDuplicates(damage, database.damage)
+            database.wards = await sortArrayRemoveDuplicates(wards, database.wards)
+            database.gold = await sortArrayRemoveDuplicates(gold, database.gold)
 
-            database.markModified('wins', 'masteries', 'conquest', 'hours', 'kills', 'deaths')
+            database.markModified('wins', 'masteries', 'conquest', 'hours', 'kills', 'deaths', 'healing', 'damage', 'wards', 'gold')
             database.save(() => console.log('Updated!'))
         })
         .catch(err => console.log(err))
-
 }
 
 function playerUpdate(api, array, property) {
