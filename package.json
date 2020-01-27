@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/taylorjohannsen/smite-stats/issues"
   },
-  "homepage": "https://github.com/taylorjohannsen/smite-stats#readme"
+  "homepage": "https://github.com/taylorjohannsen/smite-stats#readme",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }

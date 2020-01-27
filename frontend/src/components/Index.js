@@ -29,7 +29,7 @@ class Index extends React.Component {
     }
 
     callMongo() {
-        Axios.get('/mongo')
+        Axios.get('http://localhost:3001/mongo')
             .then(res => {
                 let mongo = res.data
 
