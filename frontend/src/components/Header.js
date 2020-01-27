@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link ,withRouter } from 'react-router-dom'
 import '../css/Header.css'
+import logo from '../images/icon.jpg' 
 
 class Header extends React.Component {
     constructor() {
@@ -81,7 +82,11 @@ class Header extends React.Component {
             <div className='HeaderCont'>
                 {(this.state.player === true) ? playerProfile : <div className="placeholder"></div>}
                 <div className="mainTitleCont">
-                    <Link className='mainTitle' to="/" >Smite-Stats</Link>
+                    <Link className='mainTitle' to="/" >
+                        <div className='mainText'>Smite</div>
+                        <img className="lightning" alt="smite" src={logo} />
+                        <div className='mainText'>Stats</div>
+                    </Link>
                 </div>
                 <div className="searchCont botMar">
                     <div className='cFlex'>

@@ -74,6 +74,9 @@
     margin-bottom: 40px;
     color: white;
     text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .searchCont {
@@ -124,4 +127,9 @@
 
 .change:hover {
     color: white;
+}
+
+.lightning {
+    height: 50px;
+    width: auto;
 }

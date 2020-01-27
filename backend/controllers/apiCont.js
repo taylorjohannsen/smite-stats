@@ -6,20 +6,22 @@ module.exports.getPlayerInfo = async (req, res) => {
     // } = req.body
     let player = 'taylortj'
     let playerObject = {}
-
+    
+    // team, name, level, master, conq rank, region, hoursl, wins ,losess leaves, friends list, matches
     api.getPlayer(player)
-    .then(data => {
-        let playerData = data[0]
-        
+        .then(res => {
+            let data = res[0]
+
+            playerObject.name = data.hz_player_name
+            playerObject.icon = (data.Avatar_URL === '') ? '' : ''
 
 
 
-
-        // res.status(200).json(playerInfo);
-    })
-    .catch(err => {
-        res.status(500).json(err);
-    })
+            // res.status(200).json(playerInfo);
+        })
+        .catch(err => {
+            res.status(500).json(err);
+        })
 }
 
 module.exports.getMongoData = (req, res) => {
@@ -31,3 +33,4 @@ module.exports.getMongoData = (req, res) => {
             res.status(500).json(err);
         })
 }
+
