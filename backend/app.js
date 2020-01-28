@@ -18,6 +18,9 @@ global.api = new hirez.Smite({
     authKey: creds.authKey,
 })
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 mongoose.connect(db.uri, { useNewUrlParser: true, useUnifiedTopology: true } ,(err) => (err) ? console.log(err) : console.log('Connnected to DB!'))
 
 app.use('/', index)

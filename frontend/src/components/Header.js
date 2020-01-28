@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link ,withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import '../css/Header.css'
-import logo from '../images/icon.jpg' 
+import logo from '../images/icon.jpg'
 
 class Header extends React.Component {
     constructor() {
@@ -51,13 +51,17 @@ class Header extends React.Component {
         }
     }
 
-    searchPlayer() {
+    searchPlayer(e) {
+        e.preventDefault()
+        
         this.props.history.push('/player/' + this.state.name)
+
+        this.refs.searchInput.value = ''
     }
 
     removeProfile() {
         localStorage.clear()
-        
+
         this.setState({
             player: false,
             profile: {}
@@ -89,12 +93,12 @@ class Header extends React.Component {
                     </Link>
                 </div>
                 <div className="searchCont botMar">
-                    <div className='cFlex'>
-                        <input className="userInput" name="name" type="text" placeholder="Search Player - PC Only" onChange={(e) => this.handleInput(e)} autoComplete='off' />
+                    <form className='cFlex' onSubmit={(e) => this.searchPlayer(e)}>
+                        <input className="userInput" name="name" type="text" placeholder="Search Player - PC Only" ref="searchInput" onChange={(e) => this.handleInput(e)} autoComplete='off' />
                         <div className="searchCont">
-                            <button className="userSubmit" onClick={() => this.searchPlayer()}>Search</button>
+                            <button type="submit" className="userSubmit">Search</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         )
