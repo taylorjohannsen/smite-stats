@@ -22,7 +22,6 @@ mongoose.connect(db.uri, { useNewUrlParser: true, useUnifiedTopology: true } ,(e
 
 app.use('/', index)
 schedule.scheduleJob('30 * * * *', () => update.updateMongo())
-require('./controllers/apiCont').getPlayerInfo()
 
 app.listen(3001, () => console.log('Started Node on port 3001!'))
 
