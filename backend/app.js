@@ -10,18 +10,18 @@ const cors = require('cors')
 
 const app = express()
 
+app.use(cors())
+
 global.api = new hirez.Smite({
     platform: "PC",
     devId: creds.devid,
     authKey: creds.authKey,
 })
 
-app.use(cors())
-
 mongoose.connect(db.uri, { useNewUrlParser: true, useUnifiedTopology: true } ,(err) => (err) ? console.log(err) : console.log('Connnected to DB!'))
 
 app.use('/', index)
 schedule.scheduleJob('30 * * * *', () => update.updateMongo())
 
-app.listen(3001, () => console.log('Started Node on port 3001!'))
+app.listen(3100, () => console.log('Started Node on port 3100!'))
 
