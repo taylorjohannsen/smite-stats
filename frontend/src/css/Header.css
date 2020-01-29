@@ -1,10 +1,7 @@
 .HeaderCont {
     width: 100%;
     color: white;
-    margin-bottom: 50px;
-    border-bottom: 1px solid;
     overflow: auto;
-    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
 }
 
 .playerTop {
@@ -132,4 +129,17 @@
 .lightning {
     height: 50px;
     width: auto;
+}
+
+.bottomBorder {
+    margin-bottom: 50px;
+    width: 90%;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+}
+
+.dFlex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

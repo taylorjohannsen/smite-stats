@@ -64,6 +64,11 @@
     font-weight: 600;
     font-size: 16px;
     color: white;
+    text-decoration: none;
+}
+
+.playerName:hover {
+    color: grey;
 }
 
 .underPlayer {

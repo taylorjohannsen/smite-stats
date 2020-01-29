@@ -7,14 +7,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 
 class App extends React.Component {
-    constructor() {
-        super()
-
-        this.state = {
-            test: false
-        }
-    }
-
     render() {
         return (
             <BrowserRouter>

@@ -1,3 +1,159 @@
-.test {
+.playerContainer {
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.dFlex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.playerMatchBox {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.playerBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-top: 35px;
+    padding-bottom: 35px;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+}
+
+.friendsCont {
+    overflow: auto;
+    max-height: 1035px;
+    border: 3px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+}
+
+.oneThird {
+    width: 30%;
+    border: 3px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+}
+
+.oneThird:first-child {
+    border: none;
+    width: 20%;
+}
+
+.friend {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 10px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.418);
+    overflow: auto;
+}
+
+.friend:last-child {
+    border: none;
+}
+
+.friendImage {
+    height: 50px;
+    width: 50px;
+}
+
+.friendBox {
+    width: 20%;
+}
+
+.friendTitle {
     color: white;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.friendName {
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.friendName:hover {
+    color: grey;
+}
+
+.playerNamePage {
+    color: white;
+    padding-top: 10px;
+}
+
+.clanTag {
+    padding-top: 10px;
+    padding-right: 5px;
+    color: rgba(255, 255, 255, 0.671);
+    font-style: italic;
+}
+
+.imgIcon {
+    height: 200px;
+    width: 200px;
+    border: 3px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+}
+
+.pairCont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-size: 18px;
+    padding: 17px;
+    justify-content: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.418);
+}
+
+.pairCont:last-child {
+    border: none;
+}
+
+.key {
+    color: rgba(255, 255, 255, 0.507);
+    padding-right: 7.5px;
+}
+
+.value {
+    color: white;
+}
+
+.matchBox {
+    border: 3px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+}
+
+.matchCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 75px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.418);
+}
+
+.matchCont:last-child {
+    border: none;
+}
+
+.matchCont:hover {
+    filter: brightness(1.5)
+}
+
+.godSmallImage {
+    height: 50px;
+    margin: 10px;
+    border: 3px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
 }

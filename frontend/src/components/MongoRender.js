@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../css/MongoRender.css'
 
 function MongoRender(props) {
@@ -9,7 +10,7 @@ function MongoRender(props) {
                     <div className="leftBox">
                         <img className='godImage' alt={mongo.god.name} src={mongo.god.portrait}></img>
                         <div className="leftTextCont">
-                            <div className='playerName'>{mongo.player}</div>
+                            <Link to={'/player/' + mongo.player} className='playerName'>{mongo.player}</Link>
                             <div className='underPlayer'>{mongo.god.name}</div>
                             <div className='underPlayer'>{mongo.date}</div>
                         </div>
@@ -25,7 +26,7 @@ function MongoRender(props) {
                     <div className="leftBox">
                         <img className='godImage' alt={mongo.god.name} src={mongo.god.portrait}></img>
                         <div className="leftTextCont">
-                            <div className='playerName'>{mongo.player}</div>
+                            <Link to={'/player/' + mongo.player} className='playerName'>{mongo.player}</Link>
                         </div>
                     </div>
                     <div className="rightBox">

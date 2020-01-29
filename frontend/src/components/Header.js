@@ -53,7 +53,7 @@ class Header extends React.Component {
 
     searchPlayer(e) {
         e.preventDefault()
-        
+
         this.props.history.push('/player/' + this.state.name)
 
         this.refs.searchInput.value = ''
@@ -83,22 +83,27 @@ class Header extends React.Component {
         )
 
         return (
-            <div className='HeaderCont'>
-                {(this.state.player === true) ? playerProfile : <div className="placeholder"></div>}
-                <div className="mainTitleCont">
-                    <Link className='mainTitle' to="/" >
-                        <div className='mainText'>Smite</div>
-                        <img className="lightning" alt="smite" src={logo} />
-                        <div className='mainText'>Stats</div>
-                    </Link>
+            <div>
+                <div className='HeaderCont'>
+                    {(this.state.player === true) ? playerProfile : <div className="placeholder"></div>}
+                    <div className="mainTitleCont">
+                        <Link className='mainTitle' to="/" >
+                            <div className='mainText'>Smite</div>
+                            <img className="lightning" alt="smite" src={logo} />
+                            <div className='mainText'>Stats</div>
+                        </Link>
+                    </div>
+                    <div className="searchCont botMar">
+                        <form className='cFlex' onSubmit={(e) => this.searchPlayer(e)}>
+                            <input className="userInput" name="name" type="text" placeholder="Search Player - PC Only" ref="searchInput" onChange={(e) => this.handleInput(e)} autoComplete='off' />
+                            <div className="searchCont">
+                                <button type="submit" className="userSubmit">Search</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div className="searchCont botMar">
-                    <form className='cFlex' onSubmit={(e) => this.searchPlayer(e)}>
-                        <input className="userInput" name="name" type="text" placeholder="Search Player - PC Only" ref="searchInput" onChange={(e) => this.handleInput(e)} autoComplete='off' />
-                        <div className="searchCont">
-                            <button type="submit" className="userSubmit">Search</button>
-                        </div>
-                    </form>
+                <div className="dFlex">
+                    <div className="bottomBorder"></div>
                 </div>
             </div>
         )
