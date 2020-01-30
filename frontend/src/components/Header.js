@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import '../css/Header.css'
 import logo from '../images/icon.jpg'
+import store from '../store'
 
 class Header extends React.Component {
     constructor() {
@@ -35,21 +36,22 @@ class Header extends React.Component {
     }
 
     checkPlayer() {
-        if (localStorage.length !== 0) {
-            const icon = localStorage.getItem('icon')
-            const player = localStorage.getItem('player')
-            const level = localStorage.getItem('level')
+        let playerStore = store.getState()
+        console.log(playerStore)
 
+        if (playerStore !== undefined) {
             this.setState({
                 player: true,
                 profile: {
-                    player: player,
-                    icon: icon,
-                    level: level
+                    player: playerStore.player,
+                    icon: playerStore.icon,
+                    level: playerStore.level
                 }
             })
         }
     }
+
+
 
     searchPlayer(e) {
         e.preventDefault()
@@ -69,6 +71,7 @@ class Header extends React.Component {
     }
 
     render() {
+        console.log(store.getState())
         let playerProfile = (
             <div className='playerCont'>
                 <div className='cFlex'>

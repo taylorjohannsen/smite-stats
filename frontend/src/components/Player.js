@@ -1,6 +1,7 @@
 import React from 'react'
 import Axios from 'axios'
 import { Link } from 'react-router-dom'
+import store from '../store'
 import '../css/Player.css'
 
 class Player extends React.Component {
@@ -25,6 +26,10 @@ class Player extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.props.match.params.name !== prevProps.match.params.name) {
             this.getPlayerInfo()
+
+            this.setState({
+                matches: 10
+            })
         }
     }
 
@@ -55,6 +60,20 @@ class Player extends React.Component {
         this.setState({
             matches: this.state.matches + 10
         })
+    }
+
+    setFavorite() {
+        const action = {
+            type: 'changeState',
+            payload: {
+                icon: this.state.player.icon,
+                player: this.state.player.name,
+                level: this.state.player.level
+            }
+        }
+
+        store.dispatch(action)
+        console.log(store.getState())
     }
 
     render() {
@@ -99,11 +118,22 @@ class Player extends React.Component {
                         <div className="matchImage">
                             <img src={match.godIcon} alt={match.godName} className='godSmallImage' />
                             <div className="matchGodDate">
-
+                                <div className='godName'>{match.godName}</div>
+                                <div className='matchDate'>{match.date}</div>
                             </div>
                         </div>
-                        <div className="matchThird"></div>
-                        <div className="matchThird"></div>
+                        <div className="matchSecond dFlex">
+                            <div className="pad">
+                                <div className='mapName'>{match.mode}</div>
+                                <div className='matchTime'>{match.length} min</div>
+                            </div>
+                        </div>
+                        <div className="matchThird">
+                            <div className="pad">
+                                <div className='KDA'>{match.kills} / {match.deaths} / {match.assists}</div>
+                                {(match.win) ? <div className="winLoss">Win</div> : <div className="winLoss">Loss</div>}
+                            </div>
+                        </div>
                     </Link>
                 )
             } else {
@@ -124,6 +154,7 @@ class Player extends React.Component {
                                 {(this.state.player.team !== '') ? <div className="clanTag">[{this.state.player.team}] </div> : ''}
                                 <div className="playerNamePage">{this.state.player.name}</div>
                             </div>
+                            <div className='fav' onClick={() => this.setFavorite()}>+ Add as Favorite ☆</div>
                         </div>
                         <div className="oneThird">
                             <div className="pairCont">
@@ -162,8 +193,14 @@ class Player extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className='matchBox'>
-                        {matches}
+                    <div>
+                        <div className="matchesTitle">Recent Matches</div>
+                        <div className='matchBox'>
+                            {matches}
+                        </div>
+                        <div className="loadMoreCont">
+                            <div className="loadMore" onClick={() => this.updateMatchCount()}>load more</div>
+                        </div>
                     </div>
                 </div>
                 <div className="friendBox">

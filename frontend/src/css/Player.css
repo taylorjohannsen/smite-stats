@@ -26,8 +26,6 @@
     justify-content: space-between;
     margin-top: 35px;
     padding-bottom: 35px;
-    border-bottom: 1px solid;
-    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
 }
 
 .friendsCont {
@@ -101,8 +99,8 @@
 }
 
 .imgIcon {
-    height: 200px;
-    width: 200px;
+    height: auto;
+    width: 180px;
     border: 3px solid;
     border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
 }
@@ -130,6 +128,24 @@
     color: white;
 }
 
+.matchThird {
+    width: 30%;
+}
+
+.matchSecond {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.matchesTitle {
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
 .matchBox {
     border: 3px solid;
     border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
@@ -141,6 +157,8 @@
     justify-content: space-between;
     height: 75px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.418);
+    text-decoration: none;
+    color: white;
 }
 
 .matchCont:last-child {
@@ -151,9 +169,88 @@
     filter: brightness(1.5)
 }
 
+.matchImage {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 30%;
+}
+
+.matchGodDate {
+    padding-top: 10px;
+}
+
 .godSmallImage {
     height: 50px;
     margin: 10px;
     border: 3px solid;
     border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+}
+
+.godName {
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.mapName {
+    white-space: nowrap;
+    text-align: right;
+    font-size: 20px;
+    width: 100%;
+}
+
+.matchTime {
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.671);
+}
+
+.matchDate {
+    color: rgba(255, 255, 255, 0.671);
+    font-style: italic;
+    font-size: 13px;
+}
+
+.pad {
+    padding-top: 10px
+}
+
+.KDA {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.winLoss {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.loadMoreCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.loadMore {
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.loadMore:hover {
+    text-decoration: underline;
+}
+
+.fav {
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    padding-top: 5px;
+}
+
+.fav:hover {
+    text-decoration: underline;
 }
