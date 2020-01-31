@@ -1,7 +1,7 @@
 import React from 'react'
 import Axios from 'axios'
+import { PlayerContext } from '../context/PlayerContext'
 import { Link } from 'react-router-dom'
-import store from '../store'
 import '../css/Player.css'
 
 class Player extends React.Component {
@@ -19,8 +19,9 @@ class Player extends React.Component {
         this.updateMatchCount = this.updateMatchCount.bind(this)
     }
 
-    componentDidMount() {
-        this.getPlayerInfo()
+    async componentDidMount() {
+        await this.getPlayerInfo()
+        this.checkMatchCount()
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -34,24 +35,29 @@ class Player extends React.Component {
     }
 
     getPlayerInfo() {
-        this.setState({
-            loading: true,
-            error: false
-        })
-
-        Axios.post(process.env.REACT_APP_URL + '/player', {
-            player: this.props.match.params.name
-        }).then(res => {
+        return new Promise((resolve, reject) => {
             this.setState({
-                player: res.data,
-                loading: false,
+                loading: true,
+                error: false
             })
-        }).catch(err => {
-            console.log('Error:', err.response.data.message)
 
-            this.setState({
-                error: true,
-                loading: false
+            Axios.post(process.env.REACT_APP_URL + '/player', {
+                player: this.props.match.params.name
+            }).then(res => {
+                this.setState({
+                    player: res.data,
+                    loading: false,
+                })
+
+                resolve(res)
+            }).catch(err => {
+                console.log('Error:', err.response.data.message)
+
+                this.setState({
+                    error: true,
+                    loading: false
+                })
+                reject(err)
             })
         })
     }
@@ -60,20 +66,14 @@ class Player extends React.Component {
         this.setState({
             matches: this.state.matches + 10
         })
+
+        this.checkMatchCount()
     }
 
-    setFavorite() {
-        const action = {
-            type: 'changeState',
-            payload: {
-                icon: this.state.player.icon,
-                player: this.state.player.name,
-                level: this.state.player.level
-            }
+    checkMatchCount() {
+        if ((this.state.player.matches.length - this.state.matches) <= 0) {
+            this.refs.loadButton.style.display = 'none'
         }
-
-        store.dispatch(action)
-        console.log(store.getState())
     }
 
     render() {
@@ -141,7 +141,6 @@ class Player extends React.Component {
             }
         })
 
-        console.log(this.state.player)
         return (
             <div className="playerContainer dFlex">
                 <div className="playerMatchBox">
@@ -154,7 +153,11 @@ class Player extends React.Component {
                                 {(this.state.player.team !== '') ? <div className="clanTag">[{this.state.player.team}] </div> : ''}
                                 <div className="playerNamePage">{this.state.player.name}</div>
                             </div>
-                            <div className='fav' onClick={() => this.setFavorite()}>+ Add as Favorite ☆</div>
+                            <PlayerContext.Consumer>
+                                {(context) => (
+                                    <div className='fav' onClick={() => context.updatePlayer(this.state.player.name, this.state.player.icon, this.state.player.level)}>+ Add as Favorite ☆</div>
+                                )}
+                            </PlayerContext.Consumer>
                         </div>
                         <div className="oneThird">
                             <div className="pairCont">
@@ -198,7 +201,7 @@ class Player extends React.Component {
                         <div className='matchBox'>
                             {matches}
                         </div>
-                        <div className="loadMoreCont">
+                        <div ref='loadButton' className="loadMoreCont">
                             <div className="loadMore" onClick={() => this.updateMatchCount()}>load more</div>
                         </div>
                     </div>

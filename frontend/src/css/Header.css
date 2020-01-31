@@ -16,6 +16,7 @@
     float: right;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     padding: 10px;
 }
 
@@ -24,31 +25,33 @@
     width: auto;
     margin-right: 10px;
     margin-left: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.548);
-}
-
-.playerIcon:hover {
-    border: 1px solid rgb(105, 2, 88);
+    border: 1px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
 }
 
 .player {
     font-size: 18px;
-    text-align: right;
     font-weight: 500;
     text-decoration: none;
     color: white;
+    width: 100%;
 }
 
 .player:hover {
-    color: rgb(105, 2, 105);
+    color: grey;
 }
 
 .level {
     font-size: 13px;
-    text-align: right;
     color: grey;
     text-decoration: none;
     white-space: nowrap;
+    width: 100%;
+    text-align: right;
+}
+
+.linkCont {
+    text-align: right;
 }
 
 .mainTitleCont {

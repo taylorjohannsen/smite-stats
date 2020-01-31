@@ -11,7 +11,7 @@ module.exports.getPlayerInfo = async (req, res) => {
         await api.getPlayer(player)
             .then(res => {
                 let data = res[0]
-
+                
                 playerObject.name = data.hz_player_name
                 playerObject.icon = (data.Avatar_URL === '') ? 'http://cds.q6u4m8x5.hwcdn.net/web/smite-app//wp-content/uploads/2017/05/AvatarCutesyFafnir.png' : data.Avatar_URL
                 playerObject.team = data.Team_Name
@@ -55,8 +55,8 @@ module.exports.getPlayerInfo = async (req, res) => {
                     let matchObject = {}
 
                     matchObject.win = (match.Win_Status === 'Win') ? true : false
-                    matchObject.godIcon = await godPortrait(match.God.replace('_', ' '), gods)
-                    matchObject.godName = match.God.replace('_', ' ')
+                    matchObject.godIcon = await godPortrait(match.God.replace(/_/g, ' '), gods)
+                    matchObject.godName = match.God.replace(/_/g, ' ')
                     matchObject.mode = match.Map_Game
                     matchObject.id = match.Match
                     matchObject.date = match.Match_Time
