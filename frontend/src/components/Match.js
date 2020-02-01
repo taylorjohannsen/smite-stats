@@ -34,4 +34,4 @@ class Match extends React.Component {
     }
 }
 
-export default Match
+export default Match 

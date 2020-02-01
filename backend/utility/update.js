@@ -1,6 +1,6 @@
 const Main = require('../models/Main')
 const mongoose = require('mongoose')
-const { godPortrait, godsInfo } = require('../utility/gods')
+const { godPortrait, godsInfo } = require('./gameData')
 
 module.exports.updateMongo = () => {
     const players = ['taylortj', 'justvincent', 'ClassicWaldo', 'Nightwing728']
@@ -101,8 +101,8 @@ function matchUpdate(api, array, property, gods) {
     
             newObject.player = match.playerName
             newObject.count = match[property]
-            newObject.god.name = match.God.replace('_', ' ')
-            newObject.god.portrait = await godPortrait(match.God.replace('_', ' '), gods)
+            newObject.god.name = match.God.replace(/_/g, ' ')
+            newObject.god.portrait = await godPortrait(match.God.replace(/_/g, ' '), gods)
             newObject.date = match.Match_Time
             newObject.match = match.Match
     
