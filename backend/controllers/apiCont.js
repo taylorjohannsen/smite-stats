@@ -1,4 +1,6 @@
 const Main = require('../models/Main')
+const { godPortrait, godsInfo } = require('../utility/gods')
+
 
 module.exports.getPlayerInfo = async (req, res) => {
     const {
@@ -96,26 +98,20 @@ module.exports.getMongoData = (req, res) => {
         })
 }
 
-function godsInfo() {
-    return new Promise((resolve, reject) => {
-        api.getGods()
-            .then(gods => {
-                resolve(gods)
-            })
-            .catch(err => console.log(err))
-    })
-        .catch(err => console.log(err))
-}
+module.exports.getMatchData = (req, res) => {
+    const {
+        match
+    } = req.body
 
-function godPortrait(name, gods) {
-    return new Promise(async (resolve, reject) => {
-        let character = await gods.find(god => { return god.Name === name })
+    let matchObject = {}
 
-        if (character !== undefined) {
-            resolve(character.godIcon_URL)
-        } else {
-            resolve('')
-        }
-    })
-        .catch(err => console.log(err))
+    api.getMatchDetails(match)
+        .then(data => {
+            console.log(data[0])
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
+    res.status(200).json()
 }

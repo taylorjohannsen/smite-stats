@@ -1,5 +1,6 @@
 const Main = require('../models/Main')
 const mongoose = require('mongoose')
+const { godPortrait, godsInfo } = require('../utility/gods')
 
 module.exports.updateMongo = () => {
     const players = ['taylortj', 'justvincent', 'ClassicWaldo', 'Nightwing728']
@@ -144,30 +145,6 @@ function sortArrayRemoveDuplicates(array, db) {
 
         sortedArray.splice(10)
         resolve(sortedArray)
-    })
-    .catch(err => console.log(err))
-}
-
-function godsInfo() {
-    return new Promise((resolve, reject) => {
-        api.getGods()
-            .then(gods => {
-                resolve(gods)
-            })
-            .catch(err => console.log(err))
-    })
-    .catch(err => console.log(err))
-}
-
-function godPortrait(name, gods) {
-    return new Promise(async (resolve, reject) => {
-        let character = await gods.find(god => { return god.Name === name })
-
-        if (character !== undefined) {
-            resolve(character.godIcon_URL)
-        } else {
-            resolve('')
-        }
     })
     .catch(err => console.log(err))
 }
