@@ -28,8 +28,12 @@ module.exports.getPlayerInfo = async (req, res) => {
 
             })
             .catch(err => {
-                console.log(err)
-                throw new Error('Player does not exist!')
+                let error = {
+                    actual: err,
+                    message: 'this player does not exist on pc or their stats are private'
+                }
+                
+                throw error
             })
 
         await api.getFriends(player)
@@ -43,8 +47,12 @@ module.exports.getPlayerInfo = async (req, res) => {
                 playerObject.friends = filteredFriends
             })
             .catch(err => {
-                console.log(err)
-                throw new Error('Error finding friends list!')
+                let error = {
+                    actual: err,
+                    message: 'something went wrong with finding their friends list'
+                }
+
+                throw error
             })
 
         await api.getMatchHistory(player)
@@ -55,7 +63,7 @@ module.exports.getPlayerInfo = async (req, res) => {
 
                 for await (let match of matches) {
                     let matchObject = {}
-                    console.log(match)
+
                     matchObject.win = (match.Win_Status === 'Win') ? true : false
                     matchObject.godIcon = await godPortrait(match.God.replace(/_/g, ' '), gods)
                     matchObject.godName = match.God.replace(/_/g, ' ')
@@ -73,8 +81,12 @@ module.exports.getPlayerInfo = async (req, res) => {
                 playerObject.matches = matchArray
             })
             .catch(err => {
-                console.log(err)
-                throw new Error('Error finding match history!')
+                let error = {
+                    actual: err,
+                    message: 'an error happened when looking up the players match history'
+                }
+
+                throw error
             })
 
     })
@@ -82,8 +94,11 @@ module.exports.getPlayerInfo = async (req, res) => {
             res.status(200).json(playerObject);
         })
         .catch(err => {
+            console.log(err.actual)
+
             res.status(500).json({
-                message: err.message
+                message: err.message,
+                actual: err.actual.toString()
             });
         })
 }
@@ -181,12 +196,20 @@ module.exports.getMatchData = async (req, res) => {
                 player.Win_Status === 'Winner' ? matchObject.winners.push(playerObject) : matchObject.losers.push(playerObject)
             } 
         })
+        .then(() => {
+            res.status(200).json(matchObject)
+        })
         .catch(err => {
             console.log(err)
-            res.json(500).json({
-                message: 'There was an error retrieving match data!'
+
+            let error = {
+                message: 'there was an issue finding this match data, maybe it does not exist',
+                actual: err
+            }
+
+            res.status(500).json({
+                message: error.message,
+                actual: err.toString()
             })
         })
-
-    res.status(200).json(matchObject)
 }

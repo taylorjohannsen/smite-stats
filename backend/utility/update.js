@@ -21,8 +21,6 @@ module.exports.updateMongo = () => {
             let gods = await godsInfo()
 
             for await (let player of players) {
-
-                // wins, masteries, conquest rating, hours
                 await api.getPlayer(player)
                     .then(data => {
                         playerUpdate(data[0], wins, 'Wins')
@@ -32,7 +30,6 @@ module.exports.updateMongo = () => {
                     })
                     .catch(err => console.log(err))
                 
-                // kills, deaths, healing, damage, wards, gold
                 await api.getMatchHistory(player)
                     .then(async matches => {
                         await matchUpdate(matches, kills, 'Kills', gods)
