@@ -1,0 +1,20 @@
+.banCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.banBox {
+    margin: 10px;
+    padding: 10px;
+    border: 3px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+}
+
+.win {
+    background-color: rgba(68, 68, 255, 0.164);
+}
+
+.lose {
+    background-color: rgba(255, 86, 86, 0.123)
+}

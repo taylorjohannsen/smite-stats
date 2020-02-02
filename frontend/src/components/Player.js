@@ -12,6 +12,8 @@ class Player extends React.Component {
             player: {},
             loading: true,
             error: false,
+            errorText: '',
+            errorMessage: '',
             matches: 10
         }
 
@@ -55,8 +57,11 @@ class Player extends React.Component {
 
                 this.setState({
                     error: true,
-                    loading: false
+                    loading: false,
+                    errorText: err.response.data.actual,
+                    errorMessage: err.response.data.message
                 })
+                
                 reject(err)
             })
         })
@@ -91,7 +96,14 @@ class Player extends React.Component {
 
         if (this.state.error === true) {
             return (
-                <div className="friendName">Error!!</div>
+                <div className="errorBox">
+                    <div className='errorCenter'>
+                        <div className='errorText'>there was an error :(</div>
+                        <div className='errorText'>{this.state.errorMessage}</div>
+                        <div className='errorText'>if you see tj around here, give him this:</div>
+                        <textarea className='giveTJ' value={this.state.errorText} readOnly={true}></textarea>
+                    </div>
+                </div>
             )
         }
 

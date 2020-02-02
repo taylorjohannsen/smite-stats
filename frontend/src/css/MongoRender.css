@@ -57,7 +57,9 @@
 .godImage {
     height: 70px;
     width: auto;
-    padding-right: 10px;
+    margin-right: 10px;
+    border: 3px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
 }
 
 .playerName {
@@ -74,6 +76,10 @@
 .underPlayer {
     font-size: 13px;
     color: grey;
+    text-decoration: none;
+    font-style: italic;
+    padding: 0;
+    margin: 0;
 }
 
 .mongoCount {
@@ -81,4 +87,14 @@
     font-size: 20px;
     padding-right: 10px;
     color: white;
+}
+
+.matchLink {
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+}
+
+.matchLink:hover {
+    color: grey;
 }

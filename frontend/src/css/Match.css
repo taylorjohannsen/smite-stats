@@ -1,0 +1,134 @@
+.matchDetailsDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.tables {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.topDetailsCont {
+    color: white;
+}
+
+.modeName {
+    font-size: 30px;
+}
+
+.dateName {
+    color: grey;
+    font-size: 14px;
+    font-style: italic;
+    padding-bottom: 5px;
+}
+
+.tableName {
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.winnerCont {
+    width: 100%;
+    min-width: 1150px;
+    border: 3px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+    margin-bottom: 30px;
+}
+
+.detailsDiv {
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+.winner {
+    background-color: rgba(68, 68, 255, 0.164);
+    border-bottom: 1px solid black;
+}
+
+.winner:nth-child(even) {
+    background-color: rgba(68, 68, 255, 0.288);
+}
+
+.winner:last-child {
+    border: none;
+}
+
+.loser {
+    background-color: rgba(255, 86, 86, 0.123)
+}
+
+.loser:nth-child(even) {
+    background-color: rgba(255, 86, 86, 0.233)
+}
+
+.loser:last-child {
+    border: none;
+}
+
+th {
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 13px;
+}
+
+td {
+    color: rgb(212, 212, 212);
+    padding: 5px;
+    text-align: center;
+}
+
+tr {
+    width: 100%;
+}
+
+.playerTh {
+    display: flex;
+    flex-direction: row;
+}
+
+.imageTh {
+    border: 3px solid;
+    border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
+    height: 40px;
+    width: 40px;
+}
+
+.playerNameBox {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.tablePlayer {
+    font-size: 13px;
+    color: white;
+    text-decoration: none;
+}
+
+.tablePlayer:hover {
+    color: grey;
+}
+
+.playerGod {
+    font-size: 11px;
+    font-style: italic;
+    color: grey;
+}
+
+.itemIcon {
+    height: 40px;
+    width: 40px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    border: 1px solid rgba(128, 128, 128, 0.322);
+}
+
+.itemRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}

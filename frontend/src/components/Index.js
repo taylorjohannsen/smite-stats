@@ -53,8 +53,6 @@ class Index extends React.Component {
     }
 
     render() {
-
- 
         return (
             <div className="boxContainer container">
                 <MongoRender data={this.state.kills} type='Kills' />

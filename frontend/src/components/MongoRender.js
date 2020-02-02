@@ -13,6 +13,7 @@ function MongoRender(props) {
                             <Link to={'/player/' + mongo.player} className='playerName'>{mongo.player}</Link>
                             <div className='underPlayer'>{mongo.god.name}</div>
                             <div className='underPlayer'>{mongo.date}</div>
+                            <Link to={'/match/' + mongo.match} className='matchLink'>Match ID: {mongo.match}</Link>
                         </div>
                     </div>
                     <div className="rightBox">
