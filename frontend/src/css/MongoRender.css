@@ -98,3 +98,44 @@
 .matchLink:hover {
     color: grey;
 }
+
+.formFlex {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media only screen and (max-width: 650px) {
+    .godImage {
+        height: 40px;
+    }
+    
+    .userInput {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .mongoCount {
+        font-size: 15px;
+    }
+
+    .underPlayer, .matchLink {
+        white-space: nowrap;
+    }
+
+    .title {
+        padding-top: 7px;
+        font-size: 17px;
+        padding-right: 5px;
+    }
+
+    .subTitle {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 610px) {
+    .cFlex {
+        width: 100%;
+    }
+}

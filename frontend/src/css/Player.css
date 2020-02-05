@@ -35,15 +35,11 @@
     border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
 }
 
-.oneThird {
+
+.statCont {
     width: 30%;
     border: 3px solid;
     border-image: linear-gradient(to right, rgb(34, 34, 34), rgba(255, 0, 0, 0.582), orange, rgba(0, 128, 0, 0.575), rgba(111, 0, 255, 0.363), rgba(255, 255, 255, 0.637)) 5;
-}
-
-.oneThird:first-child {
-    border: none;
-    width: 20%;
 }
 
 .friend {
@@ -277,4 +273,90 @@
     width: 100%;
     margin-top: 10px;
     padding: 10px;
+}
+
+@media only screen and (max-width: 1100px) {
+    .playerContainer {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    
+    .friendBox {
+        width: auto;
+    }
+
+    .friendName {
+        font-size: 15px;
+    }
+
+    .key, .value {
+        font-size: 15px;
+    }
+
+    .imgIcon {
+        width: 150px;
+    }
+    
+    .clanTag, .playerNamePage {
+        font-size: 14px;
+    }
+    
+    .picture {
+        width: 35% !important;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .playerContainer {
+        flex-direction: column;
+    }
+
+    .playerMatchBox {
+        width: 100%;
+    }
+
+    .picture {
+        width: 30% !important;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .playerBox {
+        flex-direction: column;
+        padding-bottom: 10px;
+    }
+
+    .oneThird {
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+
+    .statCont {
+        width: 100%;
+      margin-bottom: 20px;  
+    }
+
+    .godName {
+        font-size: 13px;
+    }
+
+    .matchDate {
+        font-size: 10px;
+    }
+
+    .mapName {
+        font-size: 15px;
+    }
+
+    .matchImage {
+        width: 40%;
+    }
+
+    .godSmallImage {
+        height: 35px;
+    }
+
+    .KDA, .winLoss {
+        font-size: 13px;
+    }
 }

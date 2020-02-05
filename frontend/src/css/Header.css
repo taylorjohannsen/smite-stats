@@ -146,3 +146,30 @@
     flex-direction: row;
     justify-content: center;
 }
+
+@media only screen and (max-width: 650px) {
+    .userInput {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .mainTitle {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .formFlex {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .mainTitle {
+        padding-right: 10px;
+        padding-left: 20px;
+    }
+    
+    .bottomBorder {
+        margin-bottom: 10px;
+    }
+}

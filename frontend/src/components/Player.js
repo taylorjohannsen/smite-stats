@@ -61,7 +61,7 @@ class Player extends React.Component {
                     errorText: err.response.data.actual,
                     errorMessage: err.response.data.message
                 })
-                
+
                 reject(err)
             })
         })
@@ -154,14 +154,14 @@ class Player extends React.Component {
         })
 
         return (
-            <div className="playerContainer dFlex">
+            <div className="playerContainer">
                 <div className="playerMatchBox">
                     <div className="playerBox">
                         <div className="oneThird picture">
                             <div className='dFlex'>
                                 <img className="imgIcon" src={this.state.player.icon} alt={this.state.player.name} />
                             </div>
-                            <div className="dFlex">
+                            <div className="dFlex textWrap">
                                 {(this.state.player.team !== '') ? <div className="clanTag">[{this.state.player.team}] </div> : ''}
                                 <div className="playerNamePage">{this.state.player.name}</div>
                             </div>
@@ -171,41 +171,46 @@ class Player extends React.Component {
                                 )}
                             </PlayerContext.Consumer>
                         </div>
-                        <div className="oneThird">
-                            <div className="pairCont">
-                                <div className="key">Region: </div>
-                                <div className="value">{this.state.player.region}</div>
-                            </div>
-                            <div className="pairCont">
-                                <div className="key">Level: </div>
-                                <div className="value">{this.state.player.level}</div>
-                            </div>
-                            <div className="pairCont">
-                                <div className="key">Masteries: </div>
-                                <div className="value">{this.state.player.masteries}</div>
-                            </div>
-                            <div className="pairCont">
-                                <div className="key">Conquest MMR: </div>
-                                <div className="value">{Math.round(Number(this.state.player.rank))}</div>
+                        <div className="statCont">
+                            <div className="oneThird">
+                                <div className="pairCont">
+                                    <div className="key">Region: </div>
+                                    <div className="value">{this.state.player.region}</div>
+                                </div>
+                                <div className="pairCont">
+                                    <div className="key">Level: </div>
+                                    <div className="value">{this.state.player.level}</div>
+                                </div>
+                                <div className="pairCont">
+                                    <div className="key">Masteries: </div>
+                                    <div className="value">{this.state.player.masteries}</div>
+                                </div>
+                                <div className="pairCont">
+                                    <div className="key">Conquest MMR: </div>
+                                    <div className="value">{Math.round(Number(this.state.player.rank))}</div>
+                                </div>
                             </div>
                         </div>
-                        <div className="oneThird">
-                            <div className="pairCont">
-                                <div className="key">Hours: </div>
-                                <div className="value">{this.state.player.hours}</div>
+                        <div className="statCont">
+                            <div className="oneThird">
+                                <div className="pairCont">
+                                    <div className="key">Hours: </div>
+                                    <div className="value">{this.state.player.hours}</div>
+                                </div>
+                                <div className="pairCont">
+                                    <div className="key">Wins: </div>
+                                    <div className="value">{this.state.player.wins}</div>
+                                </div>
+                                <div className="pairCont">
+                                    <div className="key">Losses: </div>
+                                    <div className="value">{this.state.player.loss}</div>
+                                </div>
+                                <div className="pairCont">
+                                    <div className="key">Leaves: </div>
+                                    <div className="value">{this.state.player.leaves}</div>
+                                </div>
                             </div>
-                            <div className="pairCont">
-                                <div className="key">Wins: </div>
-                                <div className="value">{this.state.player.wins}</div>
-                            </div>
-                            <div className="pairCont">
-                                <div className="key">Losses: </div>
-                                <div className="value">{this.state.player.loss}</div>
-                            </div>
-                            <div className="pairCont">
-                                <div className="key">Leaves: </div>
-                                <div className="value">{this.state.player.leaves}</div>
-                            </div>
+
                         </div>
                     </div>
                     <div>

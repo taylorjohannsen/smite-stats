@@ -82,7 +82,7 @@ class Header extends React.Component {
                         </Link>
                     </div>
                     <div className="searchCont botMar">
-                        <form className='cFlex' onSubmit={(e) => this.searchPlayer(e)}>
+                        <form className='formFlex' onSubmit={(e) => this.searchPlayer(e)}>
                             <input className="userInput" name="name" type="text" placeholder="Search Player - PC Only" ref="searchInput" onChange={(e) => this.handleInput(e)} autoComplete='off' />
                             <div className="searchCont">
                                 <button type="submit" className="userSubmit">Search</button>
