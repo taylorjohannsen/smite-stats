@@ -29,8 +29,6 @@ class Match extends React.Component {
         Axios.post(process.env.REACT_APP_URL + '/match', {
             match: this.props.match.params.id
         }).then(res => {
-            console.log(res.data)
-
             this.setState({
                 match: res.data,
                 loading: false,
