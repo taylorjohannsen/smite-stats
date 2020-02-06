@@ -13,7 +13,7 @@ module.exports.getPlayerInfo = async (req, res) => {
         await api.getPlayer(player)
             .then(res => {
                 let data = res[0]
-                
+
                 playerObject.name = data.hz_player_name
                 playerObject.icon = (data.Avatar_URL === '') ? 'http://cds.q6u4m8x5.hwcdn.net/web/smite-app//wp-content/uploads/2017/05/AvatarCutesyFafnir.png' : data.Avatar_URL
                 playerObject.team = data.Team_Name
@@ -32,13 +32,13 @@ module.exports.getPlayerInfo = async (req, res) => {
                     actual: err,
                     message: 'this player does not exist on pc or their stats are private'
                 }
-                
+
                 throw error
             })
 
         await api.getFriends(player)
             .then(async friends => {
-                let filteredFriends = friends.filter(friend => { return friend.account_id !== '0'|| friend.platform === 'Steam'})
+                let filteredFriends = friends.filter(friend => { return friend.account_id !== '0' || friend.platform === 'Steam' })
 
                 for await (let friend of filteredFriends) {
                     if (friend.avatar_url === '') friend.avatar_url = 'http://cds.q6u4m8x5.hwcdn.net/web/smite-app//wp-content/uploads/2017/05/AvatarCutesyFafnir.png'
@@ -133,7 +133,7 @@ module.exports.getMatchData = async (req, res) => {
     }
 
     await api.getMatchDetails(match)
-        .then(async data => {
+        .then(async data => {            
             let banArray = []
             let firstData = data[0]
             let winFirst = (firstData.First_Ban_Side === 'Winner') ? true : false
@@ -144,7 +144,7 @@ module.exports.getMatchData = async (req, res) => {
                 banArray.push(firstData[banName])
             }
 
-            let filterBanArray = banArray.filter(ban => { return ban !== ''})
+            let filterBanArray = banArray.filter(ban => { return ban !== '' })
             let orderedBans = await orderBans(winFirst, filterBanArray, gods)
 
             matchObject.mode = firstData.name
@@ -177,13 +177,13 @@ module.exports.getMatchData = async (req, res) => {
 
                 for (let i = 1; i <= 6; i++) {
                     let propName = 'ItemId' + i
-                    
+
                     buildArray.push(player[propName])
                 }
 
                 for (let z = 1; z <= 2; z++) {
                     let propName = 'ActiveId' + z
-                    
+
                     activeArray.push(player[propName])
                 }
 
@@ -194,7 +194,7 @@ module.exports.getMatchData = async (req, res) => {
                 playerObject.build = playerBuild.build
 
                 player.Win_Status === 'Winner' ? matchObject.winners.push(playerObject) : matchObject.losers.push(playerObject)
-            } 
+            }
         })
         .then(() => {
             res.status(200).json(matchObject)
@@ -203,7 +203,7 @@ module.exports.getMatchData = async (req, res) => {
             console.log(err)
 
             let error = {
-                message: 'there was an issue finding this match data, maybe it does not exist',
+                message: 'there was an issue finding this match data, maybe it does not exist, or it is too old',
                 actual: err
             }
 

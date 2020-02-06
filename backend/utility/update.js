@@ -81,7 +81,11 @@ function playerUpdate(api, array, property) {
 function matchUpdate(api, array, property, gods) {
     return new Promise(async (resolve, reject) => {
         let newArray = []
-        let filteredMatches = await api.filter(match => { return match.Map_Game.includes('Conquest') })
+        let filteredMatches = await api.filter(match => { 
+            if (match.Map_Game !== null) {
+                return match.Map_Game.includes('Conquest')
+            }
+        })
     
         for await (let match of filteredMatches) {
             let newObject = {
