@@ -270,9 +270,17 @@
 .giveTJ {
     background-color: black;
     color: white;
+    margin: 10px;
     width: 100%;
-    margin-top: 10px;
     padding: 10px;
+    box-sizing: border-box; 
+    text-align: center;
+}
+
+.textBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 1100px) {
@@ -332,8 +340,12 @@
     }
 
     .statCont {
-        width: 100%;
-      margin-bottom: 20px;  
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 20px;  
+        height: auto;
     }
 
     .godName {
@@ -358,5 +370,9 @@
 
     .KDA, .winLoss {
         font-size: 13px;
+    }
+    
+    .pairCont {
+        padding: 10px;
     }
 }

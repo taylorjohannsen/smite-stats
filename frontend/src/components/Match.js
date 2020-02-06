@@ -68,7 +68,9 @@ class Match extends React.Component {
                         <div className='errorText'>there was an error :(</div>
                         <div className='errorText'>{this.state.errorMessage}</div>
                         <div className='errorText'>if you see tj around here, give him this:</div>
-                        <textarea className='giveTJ' value={this.state.errorText} readOnly={true}></textarea>
+                        <div className="textBox">
+                            <textarea className='giveTJ' value={this.state.errorText} readOnly={true}></textarea>
+                        </div>
                     </div>
                 </div>
             )
@@ -165,7 +167,7 @@ class Match extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='container'>
+                <div className='matchContainer'>
                     <div className="tableName">Winners</div>
                     <div className="winnerCont">
                         <table className="detailsDiv">
@@ -210,6 +212,8 @@ class Match extends React.Component {
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div className="container">
                     <Bans win={this.state.match.banWin} lose={this.state.match.banLose} ban={this.state.ban} />
                 </div>
                 <ReactTooltip />

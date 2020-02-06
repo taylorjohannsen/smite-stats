@@ -101,7 +101,9 @@ class Player extends React.Component {
                         <div className='errorText'>there was an error :(</div>
                         <div className='errorText'>{this.state.errorMessage}</div>
                         <div className='errorText'>if you see tj around here, give him this:</div>
-                        <textarea className='giveTJ' value={this.state.errorText} readOnly={true}></textarea>
+                        <div className="textBox">
+                            <textarea className='giveTJ' value={this.state.errorText} readOnly={true}></textarea>
+                        </div>
                     </div>
                 </div>
             )
