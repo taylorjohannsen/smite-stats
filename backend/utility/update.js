@@ -54,7 +54,7 @@ module.exports.updateMongo = () => {
             database.gold = await sortArrayRemoveDuplicates(gold, database.gold)
 
             database.markModified('wins', 'masteries', 'conquest', 'hours', 'kills', 'deaths', 'healing', 'damage', 'wards', 'gold')
-            database.save(() => console.log('Updated!'))
+            database.save((err) => console.log('Updated!'))
         })
         .catch(err => console.log(err))
 }
@@ -128,7 +128,6 @@ function sortArrayByCount(array) {
 async function sortArrayRemoveDuplicates(array, db) {
     return new Promise(async (resolve, reject) => {
         let sortedArray = []
-        let combinedArrays = []
         let duplicateArray = []
 
         for await (let element of db) {
@@ -142,10 +141,9 @@ async function sortArrayRemoveDuplicates(array, db) {
         for await (let duplicate of duplicateArray) {
             array.splice(array.indexOf(duplicate), 1)
         }
-
+        
+        array.concat(db)
         sortedArray = array.sort((a, b) => (a.count < b.count) ? 1 : -1)
-        combinedArrays = array.concat(db)
-        sortedArray = combinedArrays.sort((a, b) => (a.count < b.count) ? 1 : -1)
 
         sortedArray.splice(10)
         resolve(sortedArray)

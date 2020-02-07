@@ -28,5 +28,5 @@ app.use('/', index)
 app.use('/discord', discord)
 
 schedule.scheduleJob('30 * * * *', () => update.updateMongo())
-update.updateMongo()
+
 app.listen(3100, () => console.log('Started Node on port 3100!'))
