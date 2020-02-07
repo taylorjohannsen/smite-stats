@@ -29,7 +29,7 @@ module.exports.updateMongo = () => {
                         playerUpdate(data[0], hours, 'HoursPlayed')
                     })
                     .catch(err => console.log(err))
-                
+
                 await api.getMatchHistory(player)
                     .then(async matches => {
                         await matchUpdate(matches, kills, 'Kills', gods)
@@ -81,12 +81,12 @@ function playerUpdate(api, array, property) {
 function matchUpdate(api, array, property, gods) {
     return new Promise(async (resolve, reject) => {
         let newArray = []
-        let filteredMatches = await api.filter(match => { 
+        let filteredMatches = await api.filter(match => {
             if (match.Map_Game !== null) {
                 return match.Map_Game.includes('Conquest')
             }
         })
-    
+
         for await (let match of filteredMatches) {
             let newObject = {
                 _id: mongoose.Types.ObjectId(),
@@ -99,20 +99,20 @@ function matchUpdate(api, array, property, gods) {
                 date: '',
                 match: 0
             }
-    
+
             newObject.player = match.playerName
             newObject.count = match[property]
             newObject.god.name = match.God.replace(/_/g, ' ')
             newObject.god.portrait = await godPortrait(match.God.replace(/_/g, ' '), gods)
             newObject.date = match.Match_Time
             newObject.match = match.Match
-    
+
             array.push(newObject)
         }
 
         resolve(newArray)
     })
-    .catch(err => console.log(err))
+        .catch(err => console.log(err))
 }
 
 function sortArrayByCount(array) {
@@ -122,30 +122,34 @@ function sortArrayByCount(array) {
         sortedArray.splice(10)
         resolve(sortedArray)
     })
-    .catch(err => console.log(err))
+        .catch(err => console.log(err))
 }
 
-function sortArrayRemoveDuplicates(array, db) {
+async function sortArrayRemoveDuplicates(array, db) {
     return new Promise(async (resolve, reject) => {
-        let filteredArray = []
         let sortedArray = []
         let combinedArrays = []
-        
+        let duplicateArray = []
+
         for await (let element of db) {
-            let found = array.find(obj => { return element.match === obj.match || element.player === obj.player })
+            let found = await array.find(obj => element.match === obj.match)
 
-            found ? '' : filteredArray.push(element)
+            if (found) {
+                duplicateArray.push(found)
+            }
         }
 
-        if (db.length === 0) {
-            sortedArray = array.sort((a, b) => (a.count < b.count) ? 1 : -1)
-        } else {
-            combinedArrays = filteredArray.concat(db)
-            sortedArray = combinedArrays.sort((a, b) => (a.count < b.count) ? 1 : -1)
+        for await (let duplicate of duplicateArray) {
+            array.splice(array.indexOf(duplicate), 1)
         }
+
+        sortedArray = array.sort((a, b) => (a.count < b.count) ? 1 : -1)
+        combinedArrays = array.concat(db)
+        sortedArray = combinedArrays.sort((a, b) => (a.count < b.count) ? 1 : -1)
 
         sortedArray.splice(10)
         resolve(sortedArray)
     })
-    .catch(err => console.log(err))
+        .catch(err => console.log(err))
 }
+

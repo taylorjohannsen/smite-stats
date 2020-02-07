@@ -3,6 +3,7 @@ const hirez = require('hirez-api')
 const creds = require('./utility/dev-key')
 const db = require('./utility/db')
 const index = require('./routes/index')
+const discord = require('./routes/discord')
 const mongoose = require('mongoose')
 const update = require('./utility/update')
 const schedule = require('node-schedule')
@@ -24,7 +25,8 @@ app.use(express.urlencoded({ extended: false }));
 mongoose.connect(db.uri, { useNewUrlParser: true, useUnifiedTopology: true } ,(err) => (err) ? console.log(err) : console.log('Connnected to DB!'))
 
 app.use('/', index)
+app.use('/discord', discord)
 
 schedule.scheduleJob('30 * * * *', () => update.updateMongo())
-
+update.updateMongo()
 app.listen(3100, () => console.log('Started Node on port 3100!'))

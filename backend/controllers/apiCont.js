@@ -1,7 +1,6 @@
 const Main = require('../models/Main')
 const { godPortrait, godsInfo, getItems, orderBans, getBuild } = require('../utility/gameData')
 
-
 module.exports.getPlayerInfo = async (req, res) => {
     const {
         player
