@@ -12,6 +12,7 @@ module.exports.getPlayer = async (req, res) => {
             let data = res[0]
 
             playerObject.name = data.hz_player_name
+            playerObject.icon = (data.Avatar_URL === '') ? 'http://cds.q6u4m8x5.hwcdn.net/web/smite-app//wp-content/uploads/2017/05/AvatarCutesyFafnir.png' : data.Avatar_URL
             playerObject.team = data.Team_Name
             playerObject.level = data.Level
             playerObject.masteries = data.MasteryLevel
@@ -65,7 +66,8 @@ module.exports.getLastMatches = async (req, res) => {
                 matchArray.push(matchObject)
             }
 
-            matchArray.slice(5)
+            if (matchArray.length === 0) throw new Error('No matches!')
+
             playerObject.matches = matchArray
             res.status(200).json(playerObject)
         })
@@ -87,6 +89,11 @@ module.exports.getMongoArray = (req, res) => {
     Main.findById('5e15606ba16a672c7897d41d')
         .then(mongo => {
             let selectedArray = mongo[array]
+
+            if (selectedArray === null) {
+                throw new Error('No such leaderboard!')
+            }
+
             res.status(200).json(selectedArray);
         })
         .catch(err => {
