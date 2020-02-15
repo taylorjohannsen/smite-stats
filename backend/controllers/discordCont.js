@@ -90,7 +90,7 @@ module.exports.getMongoArray = (req, res) => {
         .then(mongo => {
             let selectedArray = mongo[array]
 
-            if (selectedArray === null) {
+            if (selectedArray === undefined) {
                 throw new Error('No such leaderboard!')
             }
 
