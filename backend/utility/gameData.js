@@ -12,9 +12,6 @@ module.exports.godsInfo = () => {
 module.exports.godPortrait = (name, gods) => {
     return new Promise(async (resolve, reject) => {
         let character = await gods.find(god => { return god.Name === name })
-        // let change = gods.forEach(god => console.log('god Name', god.Name) )
-        // console.log(change)
-
 
         if (character !== undefined) {
             resolve(character.godIcon_URL)
