@@ -63,6 +63,8 @@ module.exports.getPlayerInfo = async (req, res) => {
                 for await (let match of matches) {
                     let matchObject = {}
 
+                    if (match.God === 'ChangE') match.God = "Chang'e" // thanks hirez for inconsitent api data 
+
                     matchObject.win = (match.Win_Status === 'Win') ? true : false
                     matchObject.godIcon = await godPortrait(match.God.replace(/_/g, ' '), gods)
                     matchObject.godName = match.God.replace(/_/g, ' ')
