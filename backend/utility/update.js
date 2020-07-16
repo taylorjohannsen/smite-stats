@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const { godPortrait, godsInfo } = require('./gameData')
 
 module.exports.updateMongo = () => {
-    const players = ['taylortj', 'justvincent', 'ClassicWaldo', 'Nightwing728']
+    const players = ['taylortj', 'justvincent', 'Grynth', 'Nightwing728']
 
     Main.findById('5e15606ba16a672c7897d41d')
         .then(async database => {
@@ -99,6 +99,8 @@ function matchUpdate(api, array, property, gods) {
                 date: '',
                 match: 0
             }
+
+            if (match.God === 'ChangE') match.God = "Chang'e" // thanks hirez for inconsitent api data 
 
             newObject.player = match.playerName
             newObject.count = match[property]
