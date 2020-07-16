@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const { godPortrait, godsInfo } = require('./gameData')
 
 module.exports.updateMongo = () => {
-    const players = ['taylortj', 'justvincent', 'Grynth', 'Nightwing728']
+    const players = ['taylortj', 'justvincent', 'Grynth', 'Nightwing728', 'Leeemurrr', 'Awesmoses', 'Seraphex', 'Psalodran']
 
     Main.findById('5e15606ba16a672c7897d41d')
         .then(async database => {
