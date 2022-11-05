@@ -1,3 +1,3 @@
-/node_modules
+node_modules
 /utility/dev-key.js
 /utility/db.js

@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const { godPortrait, godsInfo } = require('./gameData')
 
 module.exports.updateMongo = () => {
-    const players = ['taylortj', 'justvincent', 'Grynth', 'Nightwing728', 'Awesmoses', 'Seraphex', 'Psalodran', 'Cannares', 'imakebuckets']
+    const players = ['taylortj', 'justvincent', 'Grynth', 'Nightwing728', 'Awesmoses', 'Seraphex', 'Psalodran', 'Cannares']
 
     Main.findById('5e15606ba16a672c7897d41d')
         .then(async database => {
@@ -23,6 +23,7 @@ module.exports.updateMongo = () => {
             for await (let player of players) {
                 await api.getPlayer(player)
                     .then(data => {
+                        console.log(player)
                         playerUpdate(data[0], wins, 'Wins')
                         playerUpdate(data[0], masteries, 'MasteryLevel')
                         playerUpdate(data[0], conquest, 'Rank_Stat_Conquest')
@@ -70,10 +71,14 @@ function playerUpdate(api, array, property) {
         date: '',
         match: ''
     }
+    
+    if (!api) {
+        console.log(api)
+    }
 
     newObject.player = api.hz_player_name
     newObject.count = api[property]
-    newObject.god.portrait = (api.Avatar_URL === '') ? 'http://cds.q6u4m8x5.hwcdn.net/web/smite-app//wp-content/uploads/2017/05/AvatarCutesyFafnir.png' : api.Avatar_URL
+    newObject.god.portrait = (api.Avatar_URL === '' || api.Avatar_URL === 'http://webcdn.hirezstudios.com/smite-app/wp-content/uploads/2016/10/Cutesy_Valkyrie.png') ? 'http://webcdn.hirezstudios.com/smite-app/wp-content/uploads/2015/06/Icon_Snowman_08.png' : api.Avatar_URL
 
     array.push(newObject)
 }

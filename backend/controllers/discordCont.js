@@ -12,7 +12,7 @@ module.exports.getPlayer = async (req, res) => {
             let data = res[0]
 
             playerObject.name = data.hz_player_name
-            playerObject.icon = (data.Avatar_URL === '') ? 'http://cds.q6u4m8x5.hwcdn.net/web/smite-app//wp-content/uploads/2017/05/AvatarCutesyFafnir.png' : data.Avatar_URL
+            playerObject.icon = (data.Avatar_URL === '') ? 'http://webcdn.hirezstudios.com/smite-app/wp-content/uploads/2015/06/Icon_Snowman_08.png' : data.Avatar_URL
             playerObject.team = data.Team_Name
             playerObject.level = data.Level
             playerObject.masteries = data.MasteryLevel

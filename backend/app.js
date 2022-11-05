@@ -1,5 +1,5 @@
 const express = require('express')
-const hirez = require('hirez-api')
+const hirez = require('./utility/hirez-api')
 const creds = require('./utility/dev-key')
 const db = require('./utility/db')
 const index = require('./routes/index')

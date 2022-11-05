@@ -11,10 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "hirez-api": "^1.0.0",
-    "hirez.js": "^2.0.0",
+    "md5": "^2.3.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.8.5",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "node-schedule": "^1.3.2"
   }
 }
